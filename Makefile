@@ -15,7 +15,7 @@ build: $(FILES)
 	$(CC) -o $(OUT_EXE) $(FILES) -lm
 
 clean:
-	rm -f *.o *.asm non_param_kernel
+	rm -f *.o *.asm *.bin non_param_kernel
 
 rebuild:
 	clean build

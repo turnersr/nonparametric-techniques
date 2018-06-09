@@ -46,6 +46,7 @@ double l2_distance(double * restrict a, double * restrict b, int size)
   c = (double*)malloc(sizeof(double));
   l2_distance_loop(c,a,b,size);
   return sqrt(c[0]);
+  free(c);
 }
 
 void norm_inner_product_loop(double * restrict a, double * restrict b, int size)
@@ -67,8 +68,8 @@ double norm(double * restrict a, int size)
   c = (double*)malloc(sizeof(double));
 
   norm_inner_product_loop(c,a,size);
+  free(c);
   return sqrt(c[0]);
-
 }
 
 double boxcar(double a)
@@ -143,6 +144,12 @@ int main(int argc, char* argv[]) {
     n = SIZE;
   }
 
+  FILE *fp = fopen("smoothed_data.bin","wb");
+  
+  if(fp == NULL) {
+        printf("error creating file\n");
+        return -1;
+    }
 
   double *restrict x_points; // Test data                                                                                                                                         
   double *restrict y_points; // Test data                                                                                                                                         
@@ -158,9 +165,17 @@ int main(int argc, char* argv[]) {
   for( int i = 0; i < n; ++i ) x_points[i] = i;
   for( int i = 0; i < n; ++i ) y_points[i] = i;
 
+  printf("Start Testing\n");
   guassian_kernel_regression(c, x_points, y_points, n, h);
-
   printf("Done Testing\n");
+
+  fwrite(c, sizeof(double), sizeof(c), fp);
+  
+  fclose(fp);
+
+  free(x_points);
+  free(y_points);
+  free(c);
   return 0;
 
 }
