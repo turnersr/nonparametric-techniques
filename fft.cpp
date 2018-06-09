@@ -46,24 +46,12 @@ extern "C" {
 
     std::vector<double> v(half);
       
-    //    v.push_back(0);
-    
-    //    for(int i = 0; i < half; ++i) {
-    //      v.push_back(x[half + i]);
-      //v.push_back(x[i]);
-    //    }
-
-    //v.push_back(0);
-    
     for(int i = 0; i < half; ++i) {
       std::complex<double> complex_value_1 (x[i], x[half+i]);
       reconstructed_vector.push_back(complex_value_1);
     }
 
     int n = array_size;
-
-
-    printf("array is %d\n", n);
 
     for(int k = n/2 + 1; k < n; ++k) {
 
@@ -75,10 +63,6 @@ extern "C" {
       reconstructed_vector.push_back(point);
     }
   
-
-    //    std::complex<double> complex_value_1 (0, 0);
-
-    //    reconstructed_vector.push_back(complex_value_1);
     
     fft.inv(timevec, reconstructed_vector);
     
