@@ -28,7 +28,7 @@ int read_double_vector(char* filepath, int vector_size, double* data_vector) {
   size_t result;
 
   if(input_file == NULL) {
-    fprintf(stderr, "error opening file.");
+    fprintf(stderr, "error opening file\n");
     return -1;
     }
 
@@ -52,7 +52,7 @@ int write_double_vector(char* filepath, int vector_size, double* data_vector) {
   size_t result;
 
   if(output_file == NULL) {
-    fprintf(stderr, "error opening file.");
+    fprintf(stderr, "error opening file\n");
     return -1;
     }
 
