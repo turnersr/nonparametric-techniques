@@ -10,15 +10,14 @@
 
 extern "C" {
 
+  /* We are computing real FFT and IFFT using the complex Fourier transform routines in the Eigen library. See http://www.dspguide.com/ch12/1.htm for information. */
+
   void RFFT(double* x, int array_size, double* return_y) {
 
-    printf("In RFFT\n");
-    
     Eigen::FFT<double> fft;
-    
     std::vector<std::complex<double> > freqvec;
-  
-    std::vector<double> v; 
+    std::vector<double> v;
+    
     for(int i = 0; i < array_size; ++i) {
       v.push_back(x[i]);
     }
@@ -31,11 +30,11 @@ extern "C" {
       return_y[i] = std::real(freqvec[i]) / array_size;
       return_y[spectrum_size + i] = std::imag(freqvec[i]) / array_size;
     }
+    
   }
   
-  void RIFFT(double* x, int array_size, double* return_y) {
+  void IRFFT(double* x, int array_size, double* return_y) {
 
-    printf("In RIFF\n");
     Eigen::FFT<double> fft;
     
     std::vector<double> timevec;
