@@ -1,6 +1,6 @@
 # nonparametric 
 
-This library implements several methods from nonparametric statistics. Currently can compute kernel density estimator based on the FFT method. It can also compute nonparametric regressions for several kernels using the simple computationally expensive approach. Future plans will include spatial data structures for nearest neighbor methods and well as incorporating numerical integration to compute probabilities. 
+This library implements several methods from nonparametric statistics. Currently can compute kernel density estimator based on the FFT method. It can also compute nonparametric regressions for several kernels using the simple computationally expensive approach. Future plans will include spatial data structures for nearest neighbor methods as well as incorporating numerical integration to compute probabilities. 
 
 
 # Getting started
