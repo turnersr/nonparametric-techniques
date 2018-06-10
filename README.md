@@ -25,10 +25,9 @@ grid, delta = numpy.linspace(-2.795456, 2.978763, 16384, retstep=True)
 Now check our estimate by integration.
 
 ```python
->>> import numpy as np
->>> from numpy import linspace, trapz, fromfile
+>>> from numpy import linspace, trapz, fromfile, double
 >>> grid, delta = linspace(-2.795456, 2.978763, 16384, retstep=True)
->>> kde = fromfile("output.bin", dtype=np.double)
+>>> kde = fromfile("output.bin", dtype=double)
 >>> trapz(kde, grid)
 0.9999999423722401
 ```
