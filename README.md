@@ -11,7 +11,7 @@ The current command line tool will compute the KDE using the Gaussian kernel usi
 
 Here is an example usage. 
 
-```bash
+```
 $ make && ./non_parametric 10000 .01 tests/test_data.bin output.bin
 g++ -I /usr/local/include/eigen3 -std=c++11 -shared -fPIC -o libfft.so libfft.cpp
 gcc -O3 -ftree-vectorize -ffast-math -msse2 -funroll-loops -march=native -mfpmath=sse -fstrict-aliasing -std=c99 -L. -lfft -lm  -o non_parametric non_parametric.c kernels.c binning.c utilities.c
